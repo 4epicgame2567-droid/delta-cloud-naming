@@ -881,6 +881,10 @@ function try2launch() {
     showPopup('p-sess-block');
     return;
   }
+  if(isAuth) {
+    runLoadWin();
+    return;
+  }
   showPopup('p-tut-block');
   wtAuth = true;
 }
