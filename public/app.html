@@ -717,7 +717,7 @@ function dodeLayout() {
   nextRefresh.setMinutes(0,0,0);
   nextRefresh.setHours(now.getHours() < 12 ? 12 : 24);
   if(window.__dpTimer) clearTimeout(window.__dpTimer);
-  window.__dpTimer = setTimeout(() => loadGames && loadGames(), nextRefresh - now + 1000);
+  window.__dpTimer = setTimeout(() => dodeLayout(), nextRefresh - now + 1000);
 
   let recHtml = recFilter.map(g => makethecard(g, 'h')).join('');
 
