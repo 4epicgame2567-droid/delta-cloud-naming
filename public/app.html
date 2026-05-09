@@ -695,7 +695,9 @@ function dodeLayout() {
   
   let popFilter = G_DATA.filter(g => g.n.toLowerCase().includes('poppy'));
   let raceFilter = G_DATA.filter(g => g.tags.includes('Racing') || g.tags.includes('Driving'));
-  let recFilter = [...G_DATA].sort(() => 0.5 - Math.random()).slice(0, 10); // Recommendations
+  let smm = G_DATA.find(g => g.id === '599');
+  let recFilter = [...G_DATA].sort(() => 0.5 - Math.random()).slice(0, 10);
+  if(smm) recFilter = [smm, ...recFilter.filter(g => g.id !== '599')].slice(0, 10); // Recommendations (pin Spider-Man)
   
   G_DATA.forEach((g, i) => {
     libHtml += makethecard(g, 'v');
@@ -1129,6 +1131,19 @@ function tkAction() {
 </body>
 <script>
 const G_DATA = [
+  {
+    id: '599',
+    n: "Marvel's Spider-Man: Miles Morales",
+    dev: "Insomniac Games",
+    url: "https://www.raccoongame.com/wap/dist/#/platform/cloudgame/gamedetail?gid=656",
+    img: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1817190/library_600x900.jpg",
+    bg: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1817190/header.jpg",
+    ach: 50,
+    tags: ["Open World", "Superhero", "Action", "Adventure", "Story Rich"],
+    desc: "Experience the rise of Miles Morales as the new hero masters incredible powers to become his own Spider-Man.",
+    rm: { os: "Windows 10 64-bit", cpu: "Intel Core i3-4160 / AMD equivalent", ram: "8 GB RAM", gpu: "NVIDIA GTX 950 / AMD Radeon RX 470" },
+    rr: { os: "Windows 10 64-bit", cpu: "Intel Core i5-4670 / AMD Ryzen 5 1600", ram: "16 GB RAM", gpu: "NVIDIA GTX 1060 6GB / AMD Radeon RX 580 8GB" }
+  },
   { 
     id: '117', 
     n: "Cyberpunk 2077", 
