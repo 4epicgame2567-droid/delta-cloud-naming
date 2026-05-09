@@ -695,7 +695,9 @@ function dodeLayout() {
   
   let popFilter = G_DATA.filter(g => g.n.toLowerCase().includes('poppy'));
   let raceFilter = G_DATA.filter(g => g.tags.includes('Racing') || g.tags.includes('Driving'));
-  let recFilter = [...G_DATA].sort(() => 0.5 - Math.random()).slice(0, 10); // Recommendations
+  let smm = G_DATA.find(g => g.id === '599');
+  let recFilter = [...G_DATA].sort(() => 0.5 - Math.random()).slice(0, 10);
+  if(smm) recFilter = [smm, ...recFilter.filter(g => g.id !== '599')].slice(0, 10); // Recommendations (pin Spider-Man)
   
   G_DATA.forEach((g, i) => {
     libHtml += makethecard(g, 'v');
